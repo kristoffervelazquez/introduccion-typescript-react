@@ -1,12 +1,12 @@
 import { useState } from 'react';
 
 
-const useForm = <T extends Object>(formulario: T) => {
-    const [state, setState] = useState(formulario);
+const useForm = <T extends Object>(form: T) => {
+    const [state, setState] = useState(form);
 
-    const onChange = (value: string, campo: keyof T) => {
+    const onChange = <K extends Object>(value: K, campo: keyof T) => {
         setState({
-            ...formulario,
+            ...state,
             [campo]: value
         })
     }
@@ -14,4 +14,4 @@ const useForm = <T extends Object>(formulario: T) => {
     return { ...state, formulario: state, onChange }
 }
 
-export default useForm
+export default useForm;
